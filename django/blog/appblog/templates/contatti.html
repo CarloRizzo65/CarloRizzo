@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titolo_pagina %}Contatti{% endblock titolo_pagina %}
+{% block contenuto %}
+<h1>Contatti</h1>
+<form method="post" action="">
+    <div class="container p-5 my-5 bg-dark text-white rounded">
+        <div class="mb-3">
+            <label for="oggetto" class="form-label">Oggetto</label>
+            <input type="text" class="form-control" id="oggetto" name="oggetto" placeholder="Oggetto email">
+        </div>
+        <div class="mb-3">
+            <label for="messaggio" class="form-label">Messaggio</label>
+            <textarea class="form-control" id="messaggio" name="messaggio" rows="3"></textarea>
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-block">Invia email</button>
+        </div>
+    </div>
+</form>
+
+{% endblock contenuto %}

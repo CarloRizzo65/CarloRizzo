@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block titolo_pagina %}{{ autore2 }}{% endblock titolo_pagina %}
+{% block contenuto %}
+<h1>{{ intestazione }}{{ autore2 }}</h1>
+<ul class="list-group">
+    {% for item in articoli %}
+        <li class="list-group-item">
+            <div class="card">
+                <div class="card-header">{{ item.titolo }}</div>
+                <div class="card-body">{{ item.corpo }}</div>
+                <div class="card-footer">{{ item.data }}</div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock contenuto %}
