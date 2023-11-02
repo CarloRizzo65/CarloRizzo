@@ -1,0 +1,37 @@
+Query 1
+SELECT d.nome, d.indirizzo, d.citta, d.telefono FROM discoteche d INNER JOIN eventi e ON d.id_discoteca = e.id_discoteca
+WHERE e.data >= '2023-04-01';
+
+Query 2
+SELECT AVG(e.prezzo) AS "Prezzo medio delle discoteche di Roma" FROM discoteche d INNER JOIN eventi e ON d.id_discoteca = e.id_discoteca
+WHERE d.citta = 'Roma';
+
+Query 3
+SELECT COUNT(*) AS "Numero delle discoteche di Roma" FROM discoteche d WHERE d.citta = 'Roma';
+
+Query 4
+SELECT d.citta, COUNT(*) AS "Numero di discoteche" FROM discoteche d GROUP BY d.citta;
+
+Query 5
+SELECT dj.nome, dj.genere_musicale FROM dj dj INNER JOIN dj_eventi dje ON dj.id_dj = dje.id_dj INNER JOIN eventi e ON dje.id_evento = e.id_evento
+WHERE e.nome = 'Festa House';
+
+Query 6
+SELECT nome FROM dj INNER JOIN dj_eventi dje ON dj.id_dj = dje.id_dj WHERE dje.id_evento =
+(SELECT e.id_evento FROM eventi e WHERE e.prezzo = (SELECT MAX(prezzo) FROM eventi));
+
+Query 7
+SELECT e.nome, e.data FROM discoteche d INNER JOIN eventi e ON d.id_discoteca = e.id_discoteca 
+WHERE d.citta = 'Roma' AND e.data >= '2022-01-01' ORDER By e.data DESC;
+
+Query 8
+SELECT e.nome FROM eventi e WHERE e.id_evento NOT IN (SELECT id_evento FROM dj_eventi);
+
+Query 9
+SELECT DISTINCT dj.nome FROM discoteche d INNER JOIN eventi e ON d.id_discoteca = e.id_discoteca 
+INNER JOIN dj_eventi dje ON e.id_evento = dje.id_evento INNER JOIN dj ON dj.id_dj = dje.id_dj
+WHERE d.citta = 'Roma';
+
+Query 10
+SELECT dj.nome, COUNT(*) AS "Numero di partecipazioni ad eventi" FROM dj_eventi dje
+INNER JOIN dj ON dj.id_dj = dje.id_dj GROUP BY dj.id_dj, dj.nome;
